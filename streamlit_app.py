@@ -17,7 +17,7 @@ if uploaded_file is not None:
     st.write("Classifying...")  # You can add your image processing logic here'''
 
 import streamlit as st
-from openslide import open_slide
+import os
 
 # Title
 st.title("Whole Slide Image Viewer")
@@ -27,20 +27,17 @@ uploaded_file = st.file_uploader("Choose a .svs file...", type="svs")
 
 # Check if an image is uploaded
 if uploaded_file is not None:
-    # Read the WSI
-    slide = open_slide(uploaded_file)
+    # Save the uploaded file locally
+    with open("temp.svs", "wb") as f:
+        f.write(uploaded_file.getvalue())
 
-    # Display slide information
-    st.subheader("Slide Information:")
-    st.write(f"- Level count: {slide.level_count}")
-    st.write(f"- Dimensions: {slide.dimensions}")
-    st.write(f"- Level dimensions: {slide.level_dimensions}")
-
-    # Display an example image from the first level
-    st.subheader("Example Image from Level 0:")
-    level_0_image = slide.read_region((0, 0), 0, slide.level_dimensions[0])
-    st.image(level_0_image, caption="Slide Image (Level 0)", use_column_width=True)
+    # Use the openslide executable to open and read the WSI
+    os.system(f"openslide-show-properties temp.svs")
 
     # You can add more interactive features or analysis logic here
+
+    # Remove the temporary file
+    os.remove("temp.svs")
+
 
 

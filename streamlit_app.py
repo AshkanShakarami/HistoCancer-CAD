@@ -52,7 +52,7 @@ uploaded_file = st.file_uploader("Choose a .svs file...", type="svs")
 # Check if an image is uploaded
 if uploaded_file is not None:
     # Read the WSI using OpenSlide
-    slide = open_slide(uploaded_file)
+    slide = open_slide(BytesIO(uploaded_file.getvalue()))
 
     # Downsample factor for display
     downsample_factor = 32
@@ -71,6 +71,7 @@ if uploaded_file is not None:
 
     # Display the image
     st.image(pil_image, caption="Downsampled Slide Image", use_column_width=True)
+
 
 
 

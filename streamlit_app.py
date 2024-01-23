@@ -22,7 +22,7 @@ import io
 import os
 
 # Title
-st.title("Whole Slide Image Viewer")
+st.title("HistoCancer-CAD: Whole Slide Image Viewer")
 
 # File uploader widget
 uploaded_file = st.file_uploader("Choose a .svs file...", type="svs")

@@ -1,2 +1,3 @@
 streamlit
 openslide-python
+altair==4.1.0

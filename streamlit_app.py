@@ -55,7 +55,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
 # The path can also be read from a config file, etc.
-OPENSLIDE_PATH = r'\openslide-win64-20231011\openslide-win64-20231011\bin'
+OPENSLIDE_PATH = r'openslide-win64-20231011/bin'
 
 # Add the openslide bin directory to the system PATH
 os.environ['PATH'] = f"{OPENSLIDE_PATH};{os.environ['PATH']}"

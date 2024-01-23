@@ -38,7 +38,7 @@ if uploaded_file is not None:
 
     # Remove the temporary file
     os.remove("temp.svs")'''
-!pip install streamlit openslide-python pillow
+~pip install streamlit openslide-python pillow
 import streamlit as st
 from openslide import open_slide
 from PIL import Image

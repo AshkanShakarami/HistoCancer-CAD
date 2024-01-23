@@ -16,7 +16,7 @@ if uploaded_file is not None:
     st.image(image, caption="Uploaded Image", use_column_width=True)
     st.write("Classifying...")  # You can add your image processing logic here'''
 
-'''import streamlit as st
+import streamlit as st
 from PIL import Image
 import io
 import os
@@ -42,9 +42,9 @@ if uploaded_file is not None:
     # Add more interactive features or analysis logic here
 
     # Remove the temporary file after the image is displayed
-    os.remove("temp.svs")'''
+    os.remove("temp.svs")
 
-import streamlit as st
+'''import streamlit as st
 from PIL import Image
 import io
 import os
@@ -84,7 +84,7 @@ if uploaded_file is not None:
 
     # Remove the temporary files
     os.remove("temp.svs")
-    os.remove(dzi_file)
+    os.remove(dzi_file)'''
 
 
 

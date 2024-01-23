@@ -16,7 +16,7 @@ if uploaded_file is not None:
     st.image(image, caption="Uploaded Image", use_column_width=True)
     st.write("Classifying...")  # You can add your image processing logic here'''
 
-'''import streamlit as st
+import streamlit as st
 import os
 
 # Title
@@ -37,9 +37,9 @@ if uploaded_file is not None:
     # You can add more interactive features or analysis logic here
 
     # Remove the temporary file
-    os.remove("temp.svs")'''
+    os.remove("temp.svs")
 
-import streamlit as st
+'''import streamlit as st
 from openslide import OpenSlide
 from PIL import Image
 
@@ -73,7 +73,7 @@ if uploaded_file is not None:
     slide.close()
 
     # Remove the temporary file
-    os.remove("temp.svs")
+    os.remove("temp.svs")'''
 
 
 

@@ -41,7 +41,7 @@ if uploaded_file is not None:
 
 import streamlit as st
 from PIL import Image
-import io
+import os
 
 # Title
 st.title("Whole Slide Image Viewer")

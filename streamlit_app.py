@@ -40,9 +40,8 @@ if uploaded_file is not None:
     os.remove("temp.svs")'''
 
 import streamlit as st
-from openslide import open_slide
+from openslide import OpenSlide
 from PIL import Image
-from io import BytesIO
 
 # Title
 st.title("Whole Slide Image Viewer")
@@ -52,8 +51,12 @@ uploaded_file = st.file_uploader("Choose a .svs file...", type="svs")
 
 # Check if an image is uploaded
 if uploaded_file is not None:
-    # Read the WSI using OpenSlide
-    slide = open_slide(BytesIO(uploaded_file.getvalue()))
+    # Save the uploaded file locally
+    with open("temp.svs", "wb") as f:
+        f.write(uploaded_file.getvalue())
+
+    # Read the slide properties
+    slide = OpenSlide("temp.svs")
 
     # Display slide properties
     st.write("Slide Properties:")
@@ -65,6 +68,13 @@ if uploaded_file is not None:
     # Display an overview of the slide
     overview = slide.get_thumbnail((300, 300))
     st.image(overview, caption="Slide Overview", use_column_width=True)
+
+    # Close the slide after use
+    slide.close()
+
+    # Remove the temporary file
+    os.remove("temp.svs")
+
 
 
 

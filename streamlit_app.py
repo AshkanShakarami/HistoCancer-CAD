@@ -38,10 +38,10 @@ if uploaded_file is not None:
 
     # Remove the temporary file
     os.remove("temp.svs")'''
-
 import streamlit as st
 from openslide import open_slide
 from PIL import Image
+from io import BytesIO
 
 # Title
 st.title("Whole Slide Image Viewer")
@@ -71,6 +71,7 @@ if uploaded_file is not None:
 
     # Display the image
     st.image(pil_image, caption="Downsampled Slide Image", use_column_width=True)
+
 
 
 

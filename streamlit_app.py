@@ -38,6 +38,7 @@ if uploaded_file is not None:
 
     # Remove the temporary file
     os.remove("temp.svs")'''
+
 import streamlit as st
 from openslide import open_slide
 from PIL import Image
@@ -54,23 +55,17 @@ if uploaded_file is not None:
     # Read the WSI using OpenSlide
     slide = open_slide(BytesIO(uploaded_file.getvalue()))
 
-    # Downsample factor for display
-    downsample_factor = 32
+    # Display slide properties
+    st.write("Slide Properties:")
+    st.write(f"- Level count: {slide.level_count}")
+    st.write(f"- Dimensions: {slide.dimensions}")
+    st.write(f"- Level dimensions: {slide.level_dimensions}")
+    st.write(f"- Level downsamples: {slide.level_downsamples}")
 
-    # Calculate downsampled dimensions
-    downsampled_dimensions = (
-        slide.dimensions[0] // downsample_factor,
-        slide.dimensions[1] // downsample_factor,
-    )
+    # Display an overview of the slide
+    overview = slide.get_thumbnail((300, 300))
+    st.image(overview, caption="Slide Overview", use_column_width=True)
 
-    # Read a downsampled version of the image
-    downsampled_image = slide.read_region((0, 0), 0, downsampled_dimensions)
-
-    # Convert to PIL Image for display
-    pil_image = Image.fromarray(downsampled_image.convert("RGB"))
-
-    # Display the image
-    st.image(pil_image, caption="Downsampled Slide Image", use_column_width=True)
 
 
 

@@ -38,9 +38,9 @@ if uploaded_file is not None:
 
     # Remove the temporary file
     os.remove("temp.svs")'''
-
 import streamlit as st
 from PIL import Image
+import io
 import os
 
 # Title
@@ -59,12 +59,14 @@ if uploaded_file is not None:
     slide_image = Image.open("temp.svs")
 
     # Display the image using Streamlit
-    st.image(slide_image, caption="Whole Slide Image", use_column_width=True)
+    image_placeholder = st.empty()
+    image_placeholder.image(slide_image, caption="Whole Slide Image", use_column_width=True, on_demand=True)
 
-    # You can add more interactive features or analysis logic here
+    # Add more interactive features or analysis logic here
 
-    # Remove the temporary file
+    # Remove the temporary file after the image is fully loaded
     os.remove("temp.svs")
+
 
 
 

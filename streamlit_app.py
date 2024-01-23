@@ -16,7 +16,6 @@ if uploaded_file is not None:
     st.image(image, caption="Uploaded Image", use_column_width=True)
     st.write("Classifying...")  # You can add your image processing logic here'''
 
-
 import streamlit as st
 from PIL import Image
 import io
@@ -38,13 +37,13 @@ if uploaded_file is not None:
     slide_image = Image.open("temp.svs")
 
     # Display the image using Streamlit
-    image_placeholder = st.empty()
-    image_placeholder.image(slide_image, caption="Whole Slide Image", use_column_width=True, on_demand=True)
+    st.image(slide_image, caption="Whole Slide Image", use_column_width=True)
 
     # Add more interactive features or analysis logic here
 
-    # Remove the temporary file after the image is fully loaded
+    # Remove the temporary file after the image is displayed
     os.remove("temp.svs")
+
 
 
 
